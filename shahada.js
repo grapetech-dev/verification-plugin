@@ -1,6 +1,7 @@
 (() => {
 
     const VERIFYURL = 'http://shahadauoduat.uaenorth.cloudapp.azure.com:5052/v1/certificate-verify';
+
     let css =
         `#shahada *{box-sizing:border-box;padding:0;margin:0;font-family:Tahoma,sans-serif}
 #shahada .grid{display:flex;font-family:Tahoma,sans-serif}
@@ -54,7 +55,7 @@
     fileLabel.id = 'file-label';
     fileLabel.setAttribute("for", "file-selector");
     fileLabel.setAttribute("style", "padding: 16px; width:100%; color:#1185c6; font-size: 14px;display: block;font-family: Tahoma,sans-serif;  border: 1px solid #1185c6;");
-    fileLabel.innerText = 'Select Certificate for Verification';
+    fileLabel.innerText = 'Select or Drag and Drop certificate for verification';
 
     inputRow.append(file, progressBar, fileLabel);
 
@@ -99,9 +100,16 @@
         const formData = new FormData();
         formData.append('file', files[0]);
 
+        const apiKey = document.getElementById('data-apikey');
+
+        if (!apiKey) throw new Error("data-apikey is not provided");
+
         fetch(VERIFYURL, {
             method: 'POST',
             body: formData,
+            headers: {
+                'Authorization': 'Bearer ' + apiKey
+            },
             redirect: 'follow'
         }).then(response => response.json())
             .then(data => {
@@ -287,7 +295,7 @@
         clearInterval(id);
         const progressBar = document.getElementById("progressBar");
         const fileLabel = document.getElementById("file-label");
-        fileLabel.innerText = 'Select Certificate for Verification';
+        fileLabel.innerText = 'Select or  Drag and Drop certificate for Verification';
         progressBar.style.display = "none";
     };
 
