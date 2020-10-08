@@ -30,6 +30,7 @@ The Javascript CDN
 ## Contributing
 
 Please see our [Contributing](CONTRIBUTING.md) guidelines.
+Contact [siv@grapetech.ae](mailto:siv@grapetech.ae) for information about contributing
 
 ## License
 
