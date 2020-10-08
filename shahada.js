@@ -1,7 +1,5 @@
 (() => {
 
-    const VERIFYURL = 'http://shahadauoduat.uaenorth.cloudapp.azure.com:5052/v1/certificate-verify';
-
     let css =
         `#shahada *{box-sizing:border-box;padding:0;margin:0;font-family:Tahoma,sans-serif}
 #shahada .grid{display:flex;font-family:Tahoma,sans-serif}
@@ -100,9 +98,12 @@
         const formData = new FormData();
         formData.append('file', files[0]);
 
-        const apiKey = document.getElementById('data-apikey');
-
+        const apiKey = shahada.getAttribute("data-apikey");
         if (!apiKey) throw new Error("data-apikey is not provided");
+
+        const VERIFYURL = shahada.getAttribute("data-verify-url");
+        if (!VERIFYURL) throw new Error("data-verify-url not provided");
+
 
         fetch(VERIFYURL, {
             method: 'POST',
