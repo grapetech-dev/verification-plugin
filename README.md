@@ -18,7 +18,7 @@ The Javascript CDN
 
 ```html 
 <!-- The below script should be added to the end to the body -->
-<script crossorigin="anonymous" type="text/javascript" src="//gist.githubusercontent.com/sivsivsree/070c2601252912e52f355d663d63ac8f/raw/7ecaedecefa8102a9010d9e4cf468def4cc8f7f2/shahada.js"></script>
+<script crossorigin="anonymous" type="text/javascript" src="//raw.githubusercontent.com/grapetech-dev/verification-plugin/<RELEASE TAG>/dist/shahada.js/shahada.js"></script>
 
 ```
 
